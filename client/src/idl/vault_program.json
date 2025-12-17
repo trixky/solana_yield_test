@@ -1,0 +1,152 @@
+{
+  "address": "D3ioGqnnBE4CkW7TN3Cb7Va2BG1sb4VE5vk5KKYoogwx",
+  "metadata": {
+    "name": "vault_program",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Solana Vault with IOU mechanism - Kyros Technical Test"
+  },
+  "instructions": [
+    {
+      "name": "advance_epoch",
+      "discriminator": [93, 138, 234, 218, 241, 230, 132, 38],
+      "accounts": [
+        { "name": "vault", "writable": true }
+      ],
+      "args": []
+    },
+    {
+      "name": "claim_withdrawal",
+      "discriminator": [118, 206, 173, 38, 239, 165, 65, 30],
+      "accounts": [
+        { "name": "user", "writable": true, "signer": true },
+        { "name": "vault", "writable": true },
+        { "name": "withdrawal_request", "writable": true },
+        { "name": "user_token_account", "writable": true },
+        { "name": "vault_token_account", "writable": true },
+        { "name": "deposit_token_mint" },
+        { "name": "token_program", "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA" }
+      ],
+      "args": []
+    },
+    {
+      "name": "deposit",
+      "discriminator": [242, 35, 198, 137, 82, 225, 242, 182],
+      "accounts": [
+        { "name": "user", "writable": true, "signer": true },
+        { "name": "vault", "writable": true },
+        { "name": "user_token_account", "writable": true },
+        { "name": "user_iou_account", "writable": true },
+        { "name": "vault_token_account", "writable": true },
+        { "name": "deposit_token_mint" },
+        { "name": "iou_token_mint", "writable": true },
+        { "name": "token_program", "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA" },
+        { "name": "associated_token_program", "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL" },
+        { "name": "system_program", "address": "11111111111111111111111111111111" }
+      ],
+      "args": [{ "name": "amount", "type": "u64" }]
+    },
+    {
+      "name": "force_advance_epoch",
+      "discriminator": [204, 149, 185, 19, 19, 47, 196, 92],
+      "accounts": [
+        { "name": "authority", "signer": true },
+        { "name": "vault", "writable": true }
+      ],
+      "args": []
+    },
+    {
+      "name": "increase_rate",
+      "discriminator": [107, 159, 17, 45, 214, 117, 54, 254],
+      "accounts": [
+        { "name": "authority", "writable": true, "signer": true },
+        { "name": "vault", "writable": true },
+        { "name": "authority_token_account", "writable": true },
+        { "name": "vault_token_account", "writable": true },
+        { "name": "deposit_token_mint" },
+        { "name": "token_program", "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA" }
+      ],
+      "args": [{ "name": "additional_tokens", "type": "u64" }]
+    },
+    {
+      "name": "initialize",
+      "discriminator": [175, 175, 109, 31, 13, 152, 155, 237],
+      "accounts": [
+        { "name": "authority", "writable": true, "signer": true },
+        { "name": "deposit_token_mint" },
+        { "name": "vault", "writable": true },
+        { "name": "iou_token_mint", "writable": true },
+        { "name": "vault_token_account", "writable": true },
+        { "name": "token_program", "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA" },
+        { "name": "associated_token_program", "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL" },
+        { "name": "system_program", "address": "11111111111111111111111111111111" },
+        { "name": "rent", "address": "SysvarRent111111111111111111111111111111111" }
+      ],
+      "args": [{ "name": "epoch_duration", "type": "i64" }]
+    },
+    {
+      "name": "request_withdrawal",
+      "discriminator": [251, 85, 121, 205, 56, 201, 12, 177],
+      "accounts": [
+        { "name": "user", "writable": true, "signer": true },
+        { "name": "vault", "writable": true },
+        { "name": "withdrawal_request", "writable": true },
+        { "name": "user_iou_account", "writable": true },
+        { "name": "iou_token_mint", "writable": true },
+        { "name": "token_program", "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA" },
+        { "name": "system_program", "address": "11111111111111111111111111111111" }
+      ],
+      "args": [{ "name": "shares_amount", "type": "u64" }]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Vault",
+      "discriminator": [211, 8, 232, 43, 2, 152, 117, 119]
+    },
+    {
+      "name": "WithdrawalRequest",
+      "discriminator": [242, 88, 147, 173, 182, 62, 229, 193]
+    }
+  ],
+  "types": [
+    {
+      "name": "Vault",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "authority", "type": "pubkey" },
+          { "name": "deposit_token_mint", "type": "pubkey" },
+          { "name": "iou_token_mint", "type": "pubkey" },
+          { "name": "vault_token_account", "type": "pubkey" },
+          { "name": "total_deposits", "type": "u64" },
+          { "name": "total_shares", "type": "u64" },
+          { "name": "rate", "type": "u64" },
+          { "name": "current_epoch", "type": "u64" },
+          { "name": "epoch_duration", "type": "i64" },
+          { "name": "last_epoch_timestamp", "type": "i64" },
+          { "name": "bump", "type": "u8" },
+          { "name": "iou_mint_bump", "type": "u8" }
+        ]
+      }
+    },
+    {
+      "name": "WithdrawalRequest",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "user", "type": "pubkey" },
+          { "name": "vault", "type": "pubkey" },
+          { "name": "shares_amount", "type": "u64" },
+          { "name": "tokens_to_receive", "type": "u64" },
+          { "name": "request_epoch", "type": "u64" },
+          { "name": "claimable_epoch", "type": "u64" },
+          { "name": "claimed", "type": "bool" },
+          { "name": "bump", "type": "u8" }
+        ]
+      }
+    }
+  ]
+}
+
+
