@@ -7,7 +7,6 @@ import {
   TOKEN_PROGRAM_ID, 
   ASSOCIATED_TOKEN_PROGRAM_ID,
   getAssociatedTokenAddress,
-  createAssociatedTokenAccountInstruction,
   getAccount,
 } from '@solana/spl-token';
 import toast from 'react-hot-toast';
@@ -142,6 +141,7 @@ export function useVaultProgram() {
         true
       );
 
+      // @ts-expect-error - Anchor types are too deep for TypeScript
       const tx = await program.methods
         .initialize(new BN(epochDuration))
         .accounts({
