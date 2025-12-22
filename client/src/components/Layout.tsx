@@ -1,10 +1,8 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { useWallet } from '@solana/wallet-adapter-react';
 
 export default function Layout() {
   const location = useLocation();
-  const { publicKey } = useWallet();
 
   return (
     <div className="min-h-screen bg-dark-950 relative overflow-hidden">
@@ -59,17 +57,7 @@ export default function Layout() {
             </nav>
 
             {/* Wallet */}
-            <div className="flex items-center gap-4">
-              {publicKey && (
-                <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-dark-800/50 border border-white/5">
-                  <div className="w-2 h-2 rounded-full bg-vault-400 animate-pulse" />
-                  <span className="text-sm text-dark-300 font-mono">
-                    {publicKey.toBase58().slice(0, 4)}...{publicKey.toBase58().slice(-4)}
-                  </span>
-                </div>
-              )}
-              <WalletMultiButton />
-            </div>
+            <WalletMultiButton />
           </div>
         </div>
       </header>
