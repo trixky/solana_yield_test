@@ -9,15 +9,15 @@ export default function Layout() {
   return (
     <div className="min-h-screen bg-dark-950 relative overflow-hidden">
       {/* Background effects */}
-      <div className="fixed inset-0 opacity-30" style={{
+      <div className="fixed inset-0 opacity-30 pointer-events-none" style={{
         backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)',
         backgroundSize: '60px 60px'
       }} />
-      <div className="fixed top-0 left-1/4 w-[600px] h-[600px] bg-vault-500/10 rounded-full blur-[120px] -translate-y-1/2" />
-      <div className="fixed bottom-0 right-1/4 w-[400px] h-[400px] bg-vault-600/10 rounded-full blur-[100px] translate-y-1/2" />
+      <div className="fixed top-0 left-1/4 w-[600px] h-[600px] bg-vault-500/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none" />
+      <div className="fixed bottom-0 right-1/4 w-[400px] h-[400px] bg-vault-600/10 rounded-full blur-[100px] translate-y-1/2 pointer-events-none" />
 
       {/* Header */}
-      <header className="relative z-10 border-b border-white/5">
+      <header className="relative z-50 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}

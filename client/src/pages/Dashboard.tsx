@@ -188,6 +188,30 @@ export default function Dashboard() {
         </p>
       </div>
 
+      {/* Devnet USDC Info Card */}
+      <Card className="animate-fade-in stagger-1">
+        <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
+          <h4 className="font-semibold text-cyan-400 mb-2">💰 USDC Devnet</h4>
+          <p className="text-sm text-dark-300 mb-3">
+            This vault uses <span className="text-cyan-400 font-medium">USDC-Dev</span> tokens on Solana Devnet.
+          </p>
+          <p className="text-sm text-dark-400 mb-2">
+            Mint address: <code className="bg-dark-800 px-2 py-0.5 rounded text-cyan-400">Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr</code>
+          </p>
+          <p className="text-sm text-dark-300">
+            Get free tokens here:{' '}
+            <a
+              href="https://spl-token-faucet.com/?token-name=USDC-Dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cyan-400 hover:text-cyan-300 underline"
+            >
+              spl-token-faucet.com/?token-name=USDC-Dev
+            </a>
+          </p>
+        </div>
+      </Card>
+
       {/* Config Warning */}
       {!isConfigured() && (
         <Card className="animate-fade-in stagger-1">
