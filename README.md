@@ -1,5 +1,9 @@
 # Kyros Vault - Technical Challenge
 
+🌐 **Live Demo:** [https://kyros.bitmoon.studio/](https://kyros.bitmoon.studio/)
+
+---
+
 A full-stack DeFi application featuring a Solana vault program with IOU tokens and a modern React frontend.
 
 ---
